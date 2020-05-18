@@ -8,6 +8,7 @@ jobs:
     steps:
         - id: name-branch
           run: echo "::set-output name=target::`echo "${{ github.event.issue.number }}-${{ github.event.issue.title }}" | sed -e 's/[^a-zA-Z0-9_-]/-/g' -e 's/--*/-/g' | tr '[:upper:]' '[:lower:]'`"
+        - uses: actions/checkout@v2
         - name: Push branch
           uses: ./
           with:
