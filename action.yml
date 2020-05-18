@@ -1,0 +1,31 @@
+name: "Push branch"
+description: "Create and push a branch off of another branch."
+inputs:
+  repository:
+    description: "path/repository to create branch in; must contain a /"
+    required: true
+  token:
+    description: "auth token with write permissions to the repository"
+    required: true
+  user:
+    description: "user whose token it is; defaults to github.actor"
+    required: false
+    default: ${{ github.actor }}
+  target:
+    description: "name of the new branch; required and must be a non-existing name"
+    required: true
+  source:
+    description: "name of the branch to branch off of; defaults to repository's default branch"
+    required: false
+    default: "-"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repository }}
+    - ${{ inputs.user }}:${{ inputs.token }}
+    - ${{ inputs.target }}
+    - ${{ inputs.source }}
+branding:
+  color: yellow
+  icon: git-branch
