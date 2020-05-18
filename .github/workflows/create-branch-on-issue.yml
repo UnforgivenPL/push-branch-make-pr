@@ -6,9 +6,8 @@ jobs:
   create-ticket-branch:
     runs-on: ubuntu-latest
     steps:
-      name-branch:
-        - run: echo "::set-output name=target::`echo "${{ github.event.issue.number }}-${{ github.event.issue.title }}" | sed -e 's/[^a-zA-Z0-9_-]/-/g' -e 's/--*/-/g' | tr '[:upper:]' '[:lower:]'`"
-      push-branch:
+        - id: name-branch
+          run: echo "::set-output name=target::`echo "${{ github.event.issue.number }}-${{ github.event.issue.title }}" | sed -e 's/[^a-zA-Z0-9_-]/-/g' -e 's/--*/-/g' | tr '[:upper:]' '[:lower:]'`"
         - name: Push branch
           uses: ./
           with:
