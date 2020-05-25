@@ -7,10 +7,6 @@ inputs:
   token:
     description: "auth token with write permissions to the repository"
     required: true
-  user:
-    description: "user whose token it is; defaults to github.actor"
-    required: false
-    default: ${{ github.actor }}
   target:
     description: "name of the new branch; required and must be a non-existing name"
     required: true
@@ -23,7 +19,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.repository }}
-    - ${{ inputs.user }}:${{ inputs.token }}
+    - ${{ inputs.token }}
     - ${{ inputs.target }}
     - ${{ inputs.source }}
 branding:

@@ -8,8 +8,6 @@ GitHub action to push a branch off of another branch.
 **Required**. Full `path/repository` of the repository to create branch in; must contain a `/`. The auth token must have write permissions to this repository.
 ## token
 **Required**. Auth token with write permissions to the repository.
-## user
-User (login) whose token it is; defaults to `${{ github.actor}}`, which may **not** be what you want.
 ## target
 ** Required**. Name of the new branch. Must be a currently non-existing branch. You can use old branch names as long as the old branch has been deleted before this action runs.
 ## source
